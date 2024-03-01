@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-hw-05-movies-router-tr/static/css/main.2e8471da.css",
+    "main.js": "/react-hw-05-movies-router-tr/static/js/main.96a56a6f.js",
+    "index.html": "/react-hw-05-movies-router-tr/index.html",
+    "main.2e8471da.css.map": "/react-hw-05-movies-router-tr/static/css/main.2e8471da.css.map",
+    "main.96a56a6f.js.map": "/react-hw-05-movies-router-tr/static/js/main.96a56a6f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2e8471da.css",
+    "static/js/main.96a56a6f.js"
+  ]
+}
