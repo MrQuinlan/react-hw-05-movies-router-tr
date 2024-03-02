@@ -1,10 +1,15 @@
-// import s from './GoBackButton.module.css';
-import { Link } from 'react-router-dom';
+import { useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import s from './GoBackButton.module.css';
 
 const GoBackButton = () => {
+  const prevLocation = useRef(useLocation().state);
+
   return (
-    <button>
-      <Link to="/">Go Back</Link>
+    <button className={s.btn}>
+      <Link to={prevLocation.current.from} className={s.link}>
+        Go Back
+      </Link>
     </button>
   );
 };

@@ -1,13 +1,6 @@
-import { NavLink } from 'react-router-dom';
-import s from './HomePage.module.css';
-const HomePage = () => {
-  return (
-    <li>
-      <NavLink to="/" className={s.link}>
-        <p>Home</p>
-      </NavLink>
-    </li>
-  );
+// import s from './HomePage.module.css';
+const HomePage = ({ children }) => {
+  return <main>{children}</main>;
 };
 
 export default HomePage;

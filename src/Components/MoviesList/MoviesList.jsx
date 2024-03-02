@@ -1,27 +1,18 @@
+import { Link, useLocation } from 'react-router-dom';
 // import s from './MoviesList.module.css';
-import { Link } from 'react-router-dom';
 
-const MoviesList = () => {
+const MoviesList = ({ movies }) => {
+  const location = `${useLocation().pathname}${useLocation().search}`;
+
   return (
     <ul>
-      <li>
-        <Link to="/movies/:movieId">kjhkjhsdjffghfg</Link>
-      </li>
-      <li>kjhkjhsdjffghfg</li>
-      <li>kjhkjhsdjffghfg</li>
-      <li>kjhkjhsdjffghfg</li>
-      <li>kjhkjhsdjffghfg</li>
-      <li>kjhkjhsdjffghfg</li>
-      <li>kjhkjhsdjffghfg</li>
-      <li>kjhkjhsdjffghfg</li>
-      <li>kjhkjhsdjffghfg</li>
-      <li>kjhkjhsdjffghfg</li>
-      <li>kjhkjhsdjffghfg</li>
-      <li>kjhkjhsdjffghfg</li>
-      <li>kjhkjhsdjffghfg</li>
-      <li>kjhkjhsdjffghfg</li>
-      <li>kjhkjhsdjffghfg</li>
-      <li>kjhkjhsdjffghfg</li>
+      {movies.map(movie => (
+        <li key={movie.id}>
+          <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+            {movie.title}
+          </Link>
+        </li>
+      ))}
     </ul>
   );
 };

@@ -1,33 +1,40 @@
 // import s from './CastList.module.css'
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import getMovies from 'Service/MovieAPI';
 
 const CastList = () => {
+  const { movieId } = useParams();
+  const [cast, setCast] = useState(null);
+
+  useEffect(() => {
+    getMovies('credits', '', movieId)
+      .then(res => {
+        setCast(res.cast);
+      })
+      .catch(err => console.error(err));
+  }, [movieId]);
+
+  if (!cast) {
+    return;
+  }
+
   return (
     <ul>
-      <li>
-        <img alt="Actor photo0"></img>
-        <h3>Name</h3>
-        <p>Character: rembo</p>
-      </li>
-      <li>
-        <img alt="Actor photo1"></img>
-        <h3>Name</h3>
-        <p>Character: rembo</p>
-      </li>
-      <li>
-        <img alt="Actor photo2"></img>
-        <h3>Name</h3>
-        <p>Character: rembo</p>
-      </li>
-      <li>
-        <img alt="Actor photo3"></img>
-        <h3>Name</h3>
-        <p>Character: rembo</p>
-      </li>
-      <li>
-        <img alt="Actor photo4"></img>
-        <h3>Name</h3>
-        <p>Character: rembo</p>
-      </li>
+      {cast.map(item => {
+        const { id, profile_path, name, character } = item;
+
+        return (
+          <li key={id}>
+            <img
+              src={`https://image.tmdb.org/t/p/w200${profile_path}`}
+              alt={`poster ${name}`}
+            ></img>
+            <h3>{name}</h3>
+            <p>Character: {character}</p>
+          </li>
+        );
+      })}
     </ul>
   );
 };

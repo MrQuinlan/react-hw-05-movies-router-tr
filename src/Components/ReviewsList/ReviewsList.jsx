@@ -1,133 +1,35 @@
 // import s from './ReviewsList.module.css'
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import getMovies from 'Service/MovieAPI';
 
 const ReviewsList = () => {
+  const { movieId } = useParams();
+  const [reviews, setReviews] = useState(null);
+
+  useEffect(() => {
+    getMovies('reviews', '', movieId)
+      .then(reviews => {
+        setReviews(reviews.results);
+      })
+      .catch(err => console.error(err));
+  }, [movieId]);
+
+  if (!reviews) {
+    return;
+  }
+
   return (
     <ul>
-      <li>
-        <p>Author: robocop</p>
-        <p>
-          piwreun b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyppiwreun b5tu,emtm t4 tiyufmyudt,bftmpiwreun
-          b5tu,emtm t4 tiyufmyudt,bftmnpiwreun b5tu,emtm t4 tiyupiwreun
-          b5tu,emtm t4 tiyufmyudt,bftmnyppiwreun b5tu,emtm t4
-          tiyufmyudt,bftmpiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idynyptp,t,iny,,idytp,t,iny,,idyfmpiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4 tiyufmyudt,bftmnypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4 tiyufmyudt,bftmnyppiwreun
-          b5tu,emtm t4 tiyufmyudt,bftmpiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idynyptp,t,iny,,idytp,t,iny,,idyfmpiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idyyudt,bftmnyptp,t,iny,,idyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idyyudt,bftmnyptp,t,iny,,idyyptp,t,iny,,idynyptp,t,iny,,idytp,t,iny,,idyfmpiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idyyudt,bftmnyptp,t,iny,,idy
-        </p>
-      </li>
-      <li>
-        <p>Author: robocop</p>
-        <p>
-          piwreun b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyppiwreun b5tu,emtm t4 tiyufmyudt,bftmpiwreun
-          b5tu,emtm t4 tiyufmyudt,bftmnpiwreun b5tu,emtm t4 tiyupiwreun
-          b5tu,emtm t4 tiyufmyudt,bftmnyppiwreun b5tu,emtm t4
-          tiyufmyudt,bftmpiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idynyptp,t,iny,,idytp,t,iny,,idyfmpiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4 tiyufmyudt,bftmnypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4 tiyufmyudt,bftmnyppiwreun
-          b5tu,emtm t4 tiyufmyudt,bftmpiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idynyptp,t,iny,,idytp,t,iny,,idyfmpiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idyyudt,bftmnyptp,t,iny,,idyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idyyudt,bftmnyptp,t,iny,,idyyptp,t,iny,,idynyptp,t,iny,,idytp,t,iny,,idyfmpiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idyyudt,bftmnyptp,t,iny,,idy
-        </p>
-      </li>
-      <li>
-        <p>Author: robocop</p>
-        <p>
-          piwreun b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyppiwreun b5tu,emtm t4 tiyufmyudt,bftmpiwreun
-          b5tu,emtm t4 tiyufmyudt,bftmnpiwreun b5tu,emtm t4 tiyupiwreun
-          b5tu,emtm t4 tiyufmyudt,bftmnyppiwreun b5tu,emtm t4
-          tiyufmyudt,bftmpiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idynyptp,t,iny,,idytp,t,iny,,idyfmpiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4 tiyufmyudt,bftmnypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4 tiyufmyudt,bftmnyppiwreun
-          b5tu,emtm t4 tiyufmyudt,bftmpiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idynyptp,t,iny,,idytp,t,iny,,idyfmpiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idyyudt,bftmnyptp,t,iny,,idyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idyyudt,bftmnyptp,t,iny,,idyyptp,t,iny,,idynyptp,t,iny,,idytp,t,iny,,idyfmpiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idyyudt,bftmnyptp,t,iny,,idy
-        </p>
-      </li>
-      <li>
-        <p>Author: robocop</p>
-        <p>
-          piwreun b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyppiwreun b5tu,emtm t4 tiyufmyudt,bftmpiwreun
-          b5tu,emtm t4 tiyufmyudt,bftmnpiwreun b5tu,emtm t4 tiyupiwreun
-          b5tu,emtm t4 tiyufmyudt,bftmnyppiwreun b5tu,emtm t4
-          tiyufmyudt,bftmpiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idynyptp,t,iny,,idytp,t,iny,,idyfmpiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4 tiyufmyudt,bftmnypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4 tiyufmyudt,bftmnyppiwreun
-          b5tu,emtm t4 tiyufmyudt,bftmpiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idynyptp,t,iny,,idytp,t,iny,,idyfmpiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idyyudt,bftmnyptp,t,iny,,idyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idyyudt,bftmnyptp,t,iny,,idyyptp,t,iny,,idynyptp,t,iny,,idytp,t,iny,,idyfmpiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idyyudt,bftmnyptp,t,iny,,idy
-        </p>
-      </li>
-      <li>
-        <p>Author: robocop</p>
-        <p>
-          piwreun b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyppiwreun b5tu,emtm t4 tiyufmyudt,bftmpiwreun
-          b5tu,emtm t4 tiyufmyudt,bftmnpiwreun b5tu,emtm t4 tiyupiwreun
-          b5tu,emtm t4 tiyufmyudt,bftmnyppiwreun b5tu,emtm t4
-          tiyufmyudt,bftmpiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idynyptp,t,iny,,idytp,t,iny,,idyfmpiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4 tiyufmyudt,bftmnypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4 tiyufmyudt,bftmnyppiwreun
-          b5tu,emtm t4 tiyufmyudt,bftmpiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idynyptp,t,iny,,idytp,t,iny,,idyfmpiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idyyudt,bftmnyptp,t,iny,,idyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idyyudt,bftmnyptp,t,iny,,idyyptp,t,iny,,idynyptp,t,iny,,idytp,t,iny,,idyfmpiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idypiwreun
-          b5tu,emtm t4 tiyupiwreun b5tu,emtm t4
-          tiyufmyudt,bftmnyptp,t,iny,,idyfmyudt,bftmnyptp,t,iny,,idyyudt,bftmnyptp,t,iny,,idy
-        </p>
-      </li>
+      {reviews.map(review => {
+        const { id, author, content } = review;
+        return (
+          <li key={id}>
+            <h3>Author: {author}</h3>
+            <p>{content}</p>
+          </li>
+        );
+      })}
     </ul>
   );
 };
